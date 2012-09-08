@@ -1,25 +1,21 @@
+// W1E04
+//
+// Web server that serves a basic form in address:port/form
 package main
 
 import (
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
 func init() {
-	http.HandleFunc("/display", func(w http.ResponseWriter, r *http.Request) {
-		tmpl, err := template.New("displaystuff").ParseFiles("index.html")
-		if err != nil {
-			log.Println(err)
-			return
-		}
-		tmpl = tmpl
-
-		fmt.Fprint(w, "InsertStuffHere")
-	})
-
+	// NOTE: Handlereiksi voi syöttää myös funktioita,
+	//       mutta tehtävissä esiintyvien servereiden ollessa näin minimalistisia 
+	//       käytetään nyt tätä muotoa erillisen funktion sijaan.
+	//
+	//  Luetaan sivun pohja tiedostosta ja palautetaan se sitä pyytäneelle.
 	http.HandleFunc("/form", func(w http.ResponseWriter, r *http.Request) {
 		form, err := ioutil.ReadFile("form.html")
 		if err != nil {
