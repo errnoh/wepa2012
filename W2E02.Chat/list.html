@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type"  content="text/html; charset=UTF-8">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>CHAT</title>
+    </head>
+    <body>
+        <form method="GET" action="/add-message">
+            Message:<br />
+            <input type="text" name="message" id="message" /><br />
+            <input type="submit" value="Spam" />
+        </form>
+        {{range index .Form "Message"}}
+        {{.}}<br />
+        {{end}}
+    </body>
+</html>
