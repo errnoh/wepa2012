@@ -16,11 +16,6 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
 
-func Reply(file string, w http.ResponseWriter, r *http.Request, data interface{}) {
-	t, _ := template.ParseFiles(file)
-	t.Execute(w, data)
-}
-
 func ViewHandler(w http.ResponseWriter, r *http.Request) {
 	PreventCaching(w)
 
