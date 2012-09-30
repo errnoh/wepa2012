@@ -41,7 +41,6 @@ func RemoveRegistration(r *Registration) bool {
 	return true
 }
 
-// Mmh.. pitäisi varmaan käyttää jotain tunnistettavaa hashia :| O(n) hashmap on huono idea :)
 func ContainsRegistration(r *Registration) bool {
 	_, ok := registrations[r.Name]
 	return ok

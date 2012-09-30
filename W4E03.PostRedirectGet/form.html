@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type"  content="text/html; charset=UTF-8">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Place an order</title>
+    </head>
+    <body>
+         {{range .Flashes}}
+        <p>{{.}}</p>
+        {{end}}
+        {{$session := .}}
+        <h1>Select items, and enter your data</h1>
+            <form action="/order" method="POST" >
+                Name: <input type="text" name="Name" id="name" value="{{index .Values "Name"}}" /><br />
+                Address: <input type="text" name="Address" id="address" value="{{index .Values "Address"}}" /><br />
+                Items:<br /> 
+                {{range $i, $name := index .Values "possibleitems"}}
+                <input type="checkbox" name="item:{{.}}" value="item:{{.}}" {{with index $session.Values $name}}checked{{end}}> {{.}}<br>
+                {{end}}      
+                <input type="submit"/>
+            </form>
+    </body>
+</html>
